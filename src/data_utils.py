@@ -1,4 +1,5 @@
 import re
+import glob
 
 def standardize_date(text):
     date_patterns = [
@@ -32,9 +33,12 @@ def get_day_of_week_from_string(date_string):
 
     month, day, year = map(int, date_string.split('/'))
 
-
     date_obj = datetime.datetime(year, month, day)
-
+    
     day_of_week = date_obj.strftime('%A')  
 
     return day_of_week
+
+def get_files_by_regex(pattern):
+    file_names = glob.glob(pattern)
+    return file_names
