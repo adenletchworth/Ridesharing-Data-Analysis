@@ -17,6 +17,15 @@ def standardize_date(text):
     
     return text 
 
+# Helper function for finding time pattern in raw data strings
+def find_time(text):
+    time_pattern = r'\d{1,2}:\d{2}:\d{2}' 
+    match = re.search(time_pattern, text)
+    if match:
+        return match.group()  
+    else:
+        return None
+
 # Helper function for finding date pattern in raw data strings
 def find_date(text):
     date_pattern = r'^(\d{1,2}/\d{1,2}/\d{4})'  
